@@ -1,3 +1,5 @@
+%define _disable_ld_no_undefined 1
+
 Summary:	X.org input driver based on libinput
 Name:		x11-driver-input-libinput
 Version:	0.4.0
