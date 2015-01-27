@@ -36,8 +36,12 @@ find %{buildroot} -type f -name "*.la" -exec rm -f {} ';'
 mkdir -p %{buildroot}%{_datadir}/X11/xorg.conf.d/
 install -m 0644 %{SOURCE1} %{buildroot}%{_datadir}/X11/xorg.conf.d/
 
+rm -rf %{buildroot}%{_includedir}/xorg/libinput-properties.h
+rm -rf %{buildroot}%{_libdir}/pkgconfig/xorg-libinput.pc
+
 %files
 %{_datadir}/X11/xorg.conf.d/99-libinput.conf
 %{_libdir}/xorg/modules/input/libinput_drv.so
 %{_mandir}/man4/libinput.4.xz
+
 
