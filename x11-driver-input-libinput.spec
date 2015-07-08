@@ -42,6 +42,6 @@ rm -rf %{buildroot}%{_includedir}/xorg/libinput-properties.h
 rm -rf %{buildroot}%{_libdir}/pkgconfig/xorg-libinput.pc
 
 %files
-%{_datadir}/X11/xorg.conf.d/99-libinput.conf
+%{_datadir}/X11/xorg.conf.d/90-libinput.conf
 %{_libdir}/xorg/modules/input/libinput_drv.so
 %{_mandir}/man4/libinput.4.xz
