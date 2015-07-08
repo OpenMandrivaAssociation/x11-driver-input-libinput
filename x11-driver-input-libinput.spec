@@ -2,16 +2,18 @@
 
 Summary:	X.org input driver based on libinput
 Name:		x11-driver-input-libinput
-Version:	0.10.0
+Version:	0.11.0
 Release:	1
 Group:		System/X11
 License:	MIT
 URL:		http://xorg.freedesktop.org
 Source0:	ftp://ftp.x.org/pub/individual/driver/xf86-input-libinput-%{version}.tar.bz2
-Source1:	99-libinput.conf
+Source1:	90-libinput.conf
 BuildRequires:	x11-proto-devel >= 1.0.0
-BuildRequires:	x11-server-devel >= 1.12
 BuildRequires:	x11-util-macros >= 1.0.1
+BuildRequires:	pkgconfig(libevdev)
+BuildRequires:	pkgconfig(udev)
+BuildRequires:	pkgconfig(xorg-server)
 BuildRequires:	pkgconfig(libinput)
 Requires:	x11-server-common %(xserver-sdk-abi-requires xinput)
 Conflicts:	x11-server < 1.4
