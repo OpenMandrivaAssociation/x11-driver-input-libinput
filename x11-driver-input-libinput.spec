@@ -8,7 +8,6 @@ Group:		System/X11
 License:	MIT
 URL:		http://xorg.freedesktop.org
 Source0:	ftp://ftp.x.org/pub/individual/driver/xf86-input-libinput-%{version}.tar.bz2
-Source1:	90-libinput.conf
 BuildRequires:	x11-proto-devel >= 1.0.0
 BuildRequires:	x11-util-macros >= 1.0.1
 BuildRequires:	pkgconfig(libevdev)
@@ -34,14 +33,10 @@ libinput supports it does little beyond.
 %makeinstall_std
 find %{buildroot} -type f -name "*.la" -exec rm -f {} ';'
 
-# Add scrolling support for TrackPoint and similar devices
-mkdir -p %{buildroot}%{_datadir}/X11/xorg.conf.d/
-install -m 0644 %{SOURCE1} %{buildroot}%{_datadir}/X11/xorg.conf.d/
-
 rm -rf %{buildroot}%{_includedir}/xorg/libinput-properties.h
 rm -rf %{buildroot}%{_libdir}/pkgconfig/xorg-libinput.pc
 
 %files
-%{_datadir}/X11/xorg.conf.d/90-libinput.conf
+%{_datadir}/X11/xorg.conf.d/60-libinput.conf
 %{_libdir}/xorg/modules/input/libinput_drv.so
 %{_mandir}/man4/libinput.4.xz
