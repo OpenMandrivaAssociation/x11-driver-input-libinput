@@ -2,7 +2,7 @@
 
 Summary:	X.org input driver based on libinput
 Name:		x11-driver-input-libinput
-Version:	0.19.1
+Version:	0.20.0
 Release:	1
 Group:		System/X11
 License:	MIT
@@ -37,6 +37,6 @@ rm -rf %{buildroot}%{_includedir}/xorg/libinput-properties.h
 rm -rf %{buildroot}%{_libdir}/pkgconfig/xorg-libinput.pc
 
 %files
-%{_datadir}/X11/xorg.conf.d/60-libinput.conf
+%{_datadir}/X11/xorg.conf.d/*-libinput.conf
 %{_libdir}/xorg/modules/input/libinput_drv.so
 %{_mandir}/man4/libinput.4.xz
