@@ -3,7 +3,7 @@
 Summary:	X.org input driver based on libinput
 Name:		x11-driver-input-libinput
 Version:	0.27.1
-Release:	1
+Release:	2
 Group:		System/X11
 License:	MIT
 URL:		http://xorg.freedesktop.org
@@ -22,6 +22,14 @@ This is an X driver based on libinput. It is a thin wrapper
 around libinput, so while it does provide all features that 
 libinput supports it does little beyond.
 
+%package devel
+Summary:	Xorg X11 libinput input driver development package.
+Requires:	pkgconfig
+Requires:	%{name} = %{EVRD}
+
+%description devel
+Xorg X11 libinput input driver development files.
+
 %prep
 %setup -qn xf86-input-libinput-%{version}
 
@@ -33,10 +41,11 @@ libinput supports it does little beyond.
 %makeinstall_std
 find %{buildroot} -type f -name "*.la" -exec rm -f {} ';'
 
-rm -rf %{buildroot}%{_includedir}/xorg/libinput-properties.h
-rm -rf %{buildroot}%{_libdir}/pkgconfig/xorg-libinput.pc
-
 %files
 %{_datadir}/X11/xorg.conf.d/*-libinput.conf
 %{_libdir}/xorg/modules/input/libinput_drv.so
 %{_mandir}/man4/libinput.4.xz
+
+%files devel
+%{_libdir}/pkgconfig/xorg-libinput.pc
+%{_includedir}/xorg/libinput-properties.h
