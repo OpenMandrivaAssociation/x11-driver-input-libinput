@@ -23,7 +23,7 @@ around libinput, so while it does provide all features that
 libinput supports it does little beyond.
 
 %package devel
-Summary:	Xorg X11 libinput input driver development package.
+Summary:	Xorg X11 libinput input driver development package
 Requires:	pkgconfig
 Requires:	%{name} = %{EVRD}
 
