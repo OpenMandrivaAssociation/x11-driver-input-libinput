@@ -3,7 +3,7 @@
 Summary:	X.org input driver based on libinput
 Name:		x11-driver-input-libinput
 Version:	0.28.0
-Release:	2
+Release:	3
 Group:		System/X11
 License:	MIT
 URL:		http://xorg.freedesktop.org
