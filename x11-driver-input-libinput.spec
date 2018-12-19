@@ -3,7 +3,7 @@
 Summary:	X.org input driver based on libinput
 Name:		x11-driver-input-libinput
 Version:	0.28.1
-Release:	2
+Release:	0.1
 Group:		System/X11
 License:	MIT
 URL:		http://xorg.freedesktop.org
@@ -31,14 +31,14 @@ Requires:	%{name} = %{EVRD}
 Xorg X11 libinput input driver development files.
 
 %prep
-%autosetup -n xf86-input-libinput-%{version} -p1
+%setup -qn xf86-input-libinput-%{version}
 
 %build
 %configure
-%make_build
+%make
 
 %install
-%make_install
+%makeinstall_std
 find %{buildroot} -type f -name "*.la" -exec rm -f {} ';'
 
 %files
