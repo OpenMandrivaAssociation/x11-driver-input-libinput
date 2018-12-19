@@ -31,14 +31,14 @@ Requires:	%{name} = %{EVRD}
 Xorg X11 libinput input driver development files.
 
 %prep
-%setup -qn xf86-input-libinput-%{version}
+%autosetup -n xf86-input-libinput-%{version} -p1
 
 %build
 %configure
-%make
+%make_build
 
 %install
-%makeinstall_std
+%make_install
 find %{buildroot} -type f -name "*.la" -exec rm -f {} ';'
 
 %files
