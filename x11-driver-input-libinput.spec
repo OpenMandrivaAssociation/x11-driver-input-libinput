@@ -44,7 +44,7 @@ find %{buildroot} -type f -name "*.la" -exec rm -f {} ';'
 %files
 %{_datadir}/X11/xorg.conf.d/*-libinput.conf
 %{_libdir}/xorg/modules/input/libinput_drv.so
-%{_mandir}/man4/libinput.4.xz
+%{_mandir}/man4/libinput.4.*
 
 %files devel
 %{_libdir}/pkgconfig/xorg-libinput.pc
