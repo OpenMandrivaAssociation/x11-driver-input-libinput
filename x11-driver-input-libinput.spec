@@ -2,19 +2,22 @@
 
 Summary:	X.org input driver based on libinput
 Name:		x11-driver-input-libinput
-Version:	0.30.0
+Version:	1.0.0
 Release:	1
 Group:		System/X11
 License:	MIT
 URL:		http://xorg.freedesktop.org
 Source0:	http://xorg.freedesktop.org/releases/individual/driver/xf86-input-libinput-%{version}.tar.bz2
-BuildRequires:	x11-proto-devel >= 1.0.0
-BuildRequires:	x11-util-macros >= 1.0.1
+Source1:	https://src.fedoraproject.org/rpms/xorg-x11-drv-libinput/raw/rawhide/f/71-libinput-overrides-wacom.conf
+Patch0:		https://src.fedoraproject.org/rpms/xorg-x11-drv-libinput/raw/rawhide/f/0001-Add-a-DPIScaleFactor-option-as-temporary-solution-to.patch
+BuildRequires:	pkgconfig(xorg-macros)
 BuildRequires:	pkgconfig(libevdev)
 BuildRequires:	pkgconfig(udev)
 BuildRequires:	pkgconfig(xorg-server)
 BuildRequires:	pkgconfig(libinput)
 Requires:	x11-server-common %(xserver-sdk-abi-requires xinput)
+Requires:	xkeyboard-config
+Recommends:	libinput-tools
 Conflicts:	x11-server < 1.4
 
 %description
@@ -40,9 +43,10 @@ Xorg X11 libinput input driver development files.
 %install
 %make_install
 find %{buildroot} -type f -name "*.la" -exec rm -f {} ';'
+cp %{SOURCE1} %{buildroot}%{_datadir}/X11/xorg.conf.d/
 
 %files
-%{_datadir}/X11/xorg.conf.d/*-libinput.conf
+%{_datadir}/X11/xorg.conf.d/*.conf
 %{_libdir}/xorg/modules/input/libinput_drv.so
 %{_mandir}/man4/libinput.4.*
 
