@@ -2,7 +2,7 @@
 
 Summary:	X.org input driver based on libinput
 Name:		x11-driver-input-libinput
-Version:	1.3.0
+Version:	1.4.0
 Release:	1
 Group:		System/X11
 License:	MIT
@@ -27,7 +27,6 @@ libinput supports it does little beyond.
 
 %package devel
 Summary:	Xorg X11 libinput input driver development package
-Requires:	pkgconfig
 Requires:	%{name} = %{EVRD}
 
 %description devel
