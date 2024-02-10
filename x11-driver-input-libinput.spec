@@ -1,4 +1,7 @@
 %define _disable_ld_no_undefined 1
+%if %{cross_compiling}
+%global optflags %{optflags} -I%{_prefix}/%{_target_platform}/include/xorg
+%endif
 
 Summary:	X.org input driver based on libinput
 Name:		x11-driver-input-libinput
