@@ -5,12 +5,12 @@
 
 Summary:	X.org input driver based on libinput
 Name:		x11-driver-input-libinput
-Version:	1.5.0
-Release:	2
+Version:	1.5.1~20250620
+Release:	1
 Group:		System/X11
 License:	MIT
 URL:		https://xorg.freedesktop.org
-Source0:	http://xorg.freedesktop.org/releases/individual/driver/xf86-input-libinput-%{version}.tar.xz
+Source0:	https://github.com/X11Libre/xf86-input-libinput/archive/refs/heads/master.tar.gz#/xf86-input-libinput-%{version}.tar.gz
 Source1:	https://src.fedoraproject.org/rpms/xorg-x11-drv-libinput/raw/rawhide/f/71-libinput-overrides-wacom.conf
 #Patch0:		https://src.fedoraproject.org/rpms/xorg-x11-drv-libinput/raw/rawhide/f/0001-Add-a-DPIScaleFactor-option-as-temporary-solution-to.patch
 BuildRequires:	pkgconfig(xorg-macros)
@@ -48,7 +48,8 @@ Requires:	%{name} = %{EVRD}
 Xorg X11 libinput input driver development files.
 
 %prep
-%autosetup -n xf86-input-libinput-%{version} -p1
+%autosetup -n xf86-input-libinput-master -p1
+[ -e autogen.sh ] && ./autogen.sh
 
 %build
 %configure
