@@ -5,7 +5,7 @@
 
 Summary:	X.org input driver based on libinput
 Name:		x11-driver-input-libinput
-Version:	1.5.0.1%{?date:~%{date}}
+Version:	1.5.1.0%{?date:~%{date}}
 Release:	1
 Group:		System/X11
 License:	MIT
