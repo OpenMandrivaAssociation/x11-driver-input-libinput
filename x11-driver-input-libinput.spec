@@ -66,7 +66,7 @@ cp %{SOURCE1} %{buildroot}%{_datadir}/X11/xorg.conf.d/
 
 %files
 %{_datadir}/X11/xorg.conf.d/*.conf
-#{_libdir}/xorg/modules/input/libinput_drv.so
+%{_libdir}/xorg/modules/xlibre-25.0/input/libinput_drv.so
 %doc %{_mandir}/man4/libinput.4.*
 
 %files devel
