@@ -17,6 +17,11 @@ Source0:	https://github.com/X11Libre/xf86-input-libinput/archive/refs/tags/xlibr
 %endif
 Source1:	https://src.fedoraproject.org/rpms/xorg-x11-drv-libinput/raw/rawhide/f/71-libinput-overrides-wacom.conf
 #Patch0:		https://src.fedoraproject.org/rpms/xorg-x11-drv-libinput/raw/rawhide/f/0001-Add-a-DPIScaleFactor-option-as-temporary-solution-to.patch
+BuildRequires:	autoconf
+BuildRequires:	automake
+BuildRequires:	libtool-base
+BuildRequires:	slibtool
+BuildRequires:	make
 BuildRequires:	pkgconfig(xorg-macros)
 BuildRequires:	pkgconfig(libevdev)
 BuildRequires:	pkgconfig(udev)
