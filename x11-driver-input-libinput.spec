@@ -6,7 +6,7 @@
 Summary:	X.org input driver based on libinput
 Name:		x11-driver-input-libinput
 Version:	1.5.1.0%{?date:~%{date}}
-Release:	1
+Release:	2
 Group:		System/X11
 License:	MIT
 URL:		https://xorg.freedesktop.org
@@ -62,16 +62,30 @@ Xorg X11 libinput input driver development files.
 
 %build
 %configure
-%make_build
+%if %{cross_compiling}
+# GNU libtool produced by configure is a no-op; tests then miss *.la.
+sed -i 's/ test$//' Makefile
+%endif
+%make_build LIBTOOL=slibtool
 
 %install
-%make_install
+%make_install LIBTOOL=slibtool
 find %{buildroot} -type f -name "*.la" -exec rm -f {} ';'
+%if %{cross_compiling}
+# pkg-config + PKG_CONFIG_SYSROOT_DIR prefixes the xorg module dir with the
+# sysroot. Relocate into the rpm buildroot as /usr/...
+if [ -d %{buildroot}/usr/%{_target_platform}/usr ]; then
+	cp -a %{buildroot}/usr/%{_target_platform}/usr/. %{buildroot}/usr/
+	rm -rf %{buildroot}/usr/%{_target_platform}
+fi
+# slibtool also installs an export-symbols archive as .a
+rm -f %{buildroot}%{_libdir}/xorg/modules/xlibre-*/input/*.a
+%endif
 cp %{SOURCE1} %{buildroot}%{_datadir}/X11/xorg.conf.d/
 
 %files
 %{_datadir}/X11/xorg.conf.d/*.conf
-%{_libdir}/xorg/modules/xlibre-25.0/input/libinput_drv.so
+%{_libdir}/xorg/modules/xlibre-*/input/libinput_drv.so
 %doc %{_mandir}/man4/libinput.4.*
 
 %files devel
